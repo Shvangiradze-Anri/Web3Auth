@@ -11,7 +11,9 @@ import { refreshAccessToken } from "../controllers/refreshtoken.js";
 
 const router = express.Router();
 
-router.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+router.use(
+  cors({ credentials: true, origin: "https://web3-assignment.netlify.app" })
+);
 
 router.post("/refresh_token", refreshAccessToken);
 

@@ -41,7 +41,7 @@ const MetaMaskLoginPage = () => {
       const signature = await signer.signMessage(message);
 
       const response = await axiosI.post(
-        "http://localhost:5000/api/auth/metamask",
+        "https://web3auth-bls6.onrender.com/api/auth/metamask",
         {
           address,
           message,
@@ -93,7 +93,7 @@ const MetaMaskLoginPage = () => {
 
     try {
       const response = await axiosI.post(
-        "http://localhost:5000/additionaluserinfo",
+        "https://web3auth-bls6.onrender.com/additionaluserinfo",
         completeUserData
       );
 

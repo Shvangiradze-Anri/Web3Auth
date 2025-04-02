@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://web3auth-bls6.onrender.com",
   withCredentials: true,
 });
 export const axiosI = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://web3auth-bls6.onrender.com",
   withCredentials: true,
 });
 
@@ -13,7 +13,7 @@ const refreshToken = async (): Promise<string> => {
   try {
     console.log("gaeshvaaaaa");
     const response = await axios.post(
-      "http://localhost:5000/refresh_token",
+      "https://web3auth-bls6.onrender.com/refresh_token",
       {},
       { withCredentials: true }
     );

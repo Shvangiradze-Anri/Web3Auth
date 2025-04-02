@@ -58,7 +58,7 @@ const createVerifiableCredential = async (user) => {
   const vc = {
     "@context": ["https://www.w3.org/2018/credentials/v1"],
     type: ["VerifiableCredential"],
-    issuer: "http://localhost:5000",
+    issuer: "https://web3auth-bls6.onrender.com",
     issuanceDate: new Date().toISOString(),
     credentialSubject: {
       id: `ethereum:${user._id}`,
@@ -84,7 +84,7 @@ const signCredential = (credential) => {
   credential.proof = {
     type: "RsaSignature2018",
     created: new Date().toISOString(),
-    creator: "http://localhost:5000/keys/1",
+    creator: "https://web3auth-bls6.onrender.com/keys/1",
     signatureValue: signature,
   };
   return credential;
