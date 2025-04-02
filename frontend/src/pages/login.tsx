@@ -86,8 +86,6 @@ const MetaMaskLoginPage = () => {
       ...userData,
       address,
     };
-    console.log(completeUserData);
-
     try {
       const response = await axiosI.post(
         "/additionaluserinfo",

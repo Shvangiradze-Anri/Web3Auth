@@ -1,10 +1,9 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import User from "../models/user.js"; // Assuming you have a User model that stores VC info
 dotenv.config();
+import User from "../models/user.js";
 
 const JWT_ACCESS = process.env.JWT_ACCESS;
-const JWT_REFRESH = process.env.JWT_REFRESH;
 
 export const verifyVC = (allowedRoles) => {
   return async (req, res, next) => {
@@ -16,7 +15,6 @@ export const verifyVC = (allowedRoles) => {
     }
     const date = new Date().toISOString();
     try {
-      // Decode the JWT token to get the user details
       const decoded = jwt.verify(token, JWT_ACCESS);
       req.user = decoded;
 

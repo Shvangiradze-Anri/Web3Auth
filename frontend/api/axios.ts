@@ -13,7 +13,6 @@ export const axiosI = axios.create({
 
 const refreshToken = async (): Promise<string> => {
   try {
-    console.log("gaeshvaaaaa");
     const response = await axios.post(
       `${
         DEV ? "http://localhost:5000" : "https://web3auth-bls6.onrender.com"
@@ -45,19 +44,14 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   async (response) => response,
   async (error) => {
-    console.log("response gaeshvaaaa");
-
-    // Check if response error is correctly logging
     console.error("Response error:", error.response ? error.response : error);
 
     const originalRequest = error.config;
     if (error.response && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        console.log("Attempting to refresh the token...");
         const token: string = await refreshToken();
         localStorage.setItem("token", token);
-        console.log("newtokeeeeeennn", token);
 
         originalRequest.headers["authorization"] = `Bearer ${token}`;
         return axiosInstance(originalRequest);

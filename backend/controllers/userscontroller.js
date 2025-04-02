@@ -17,14 +17,13 @@ export const additionaluserinfo = async (req, res) => {
       return res.status(400).json({ message: "Wallet address is required" });
     }
 
-    // Find user by address
     const existingUser = await User.findOne({ address });
 
     if (existingUser) {
       const updatedUser = await User.findOneAndUpdate(
         { address },
         { $set: { name, email } },
-        { new: true, upsert: true } // `new: true` returns updated user, `upsert: true` creates if not exists
+        { new: true, upsert: true }
       );
 
       return res.status(200).json({ success: true, user: updatedUser });

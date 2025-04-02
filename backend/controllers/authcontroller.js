@@ -5,36 +5,31 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import User from "../models/user.js";
 
-// JWT Secret
 const JWT_ACCESS = process.env.JWT_ACCESS;
 const JWT_REFRESH = process.env.JWT_REFRESH;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const DEV_MODE = process.env.DEV_MODE;
 
-// MetaMask Authentication Logic
 export const authenticateMetaMask = async (req, res) => {
   try {
     const { address, message, signature } = req.body;
 
-    // Verify signature
     const recoveredAddress = ethers.verifyMessage(message, signature);
     if (recoveredAddress.toLowerCase() !== address.toLowerCase()) {
       return res.status(400).json({ error: "Invalid signature" });
     }
 
-    // Save or update user in DB
     let user = await User.findOne({ address });
     if (!user) {
       user = new User({ address });
       await user.save();
     }
 
-    // Issue Verifiable Credential (VC)
     const vc = await createVerifiableCredential(user);
-    // console.log("VC>>>>>>>>>>>>>>", vc);
+
     const token = generateAccessToken(user.address, vc);
     const refreshToken = generateRefreshToken(user.address, vc);
-    // Save refresh token in DB
+
     if (vc && refreshToken) {
       user.token = refreshToken;
       user.vc = vc;
@@ -44,8 +39,8 @@ export const authenticateMetaMask = async (req, res) => {
     return res
       .cookie("refreshToken", refreshToken, {
         maxAge: 1000 * 60 * 60 * 24,
-        httpOnly: false,
-        secure: false,
+        httpOnly: true,
+        secure: true,
       })
       .json({ success: true, token, vc });
   } catch (error) {
@@ -54,7 +49,6 @@ export const authenticateMetaMask = async (req, res) => {
   }
 };
 
-// Create Verifiable Credential (VC)
 const createVerifiableCredential = async (user) => {
   const vc = {
     "@context": ["https://www.w3.org/2018/credentials/v1"],
@@ -72,12 +66,10 @@ const createVerifiableCredential = async (user) => {
     },
   };
 
-  // Sign the VC with the backend private key
   const signedVC = await signCredential(vc);
   return signedVC;
 };
 
-// Sign the VC with the backend private key
 const signCredential = (credential) => {
   const payload = JSON.stringify(credential);
   const sign = crypto.createSign("SHA256");

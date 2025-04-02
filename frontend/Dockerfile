@@ -1,4 +1,4 @@
-FROM node:20 as build
+FROM node:20 
 
 
 WORKDIR /app
@@ -22,4 +22,6 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 
-EXPOSE 80
+EXPOSE 5173
+
+# CMD [ "npx","serve","-s","dist","-1","5173" ]
