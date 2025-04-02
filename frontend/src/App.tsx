@@ -36,7 +36,9 @@ const App = () => {
         </div>
       </div>
 
-      <Outlet />
+      <div className="flex flex-grow items-center justify-center w-full">
+        <Outlet />
+      </div>
     </section>
   );
 };
