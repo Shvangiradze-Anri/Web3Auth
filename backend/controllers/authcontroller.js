@@ -44,8 +44,8 @@ export const authenticateMetaMask = async (req, res) => {
     return res
       .cookie("refreshToken", refreshToken, {
         maxAge: 1000 * 60 * 60 * 24,
-        httpOnly: false,
-        secure: false,
+        httpOnly: true,
+        secure: true,
       })
       .json({ success: true, token, vc });
   } catch (error) {
