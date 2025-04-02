@@ -9,6 +9,7 @@ import User from "../models/user.js";
 const JWT_ACCESS = process.env.JWT_ACCESS;
 const JWT_REFRESH = process.env.JWT_REFRESH;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const DEV_MODE = process.env.DEV_MODE;
 
 // MetaMask Authentication Logic
 export const authenticateMetaMask = async (req, res) => {
@@ -58,7 +59,10 @@ const createVerifiableCredential = async (user) => {
   const vc = {
     "@context": ["https://www.w3.org/2018/credentials/v1"],
     type: ["VerifiableCredential"],
-    issuer: "https://web3auth-bls6.onrender.com",
+    issuer:
+      DEV_MODE === "development"
+        ? "http://localhost:5173"
+        : "https://web3-assignment.netlify.app",
     issuanceDate: new Date().toISOString(),
     credentialSubject: {
       id: `ethereum:${user._id}`,
@@ -84,7 +88,10 @@ const signCredential = (credential) => {
   credential.proof = {
     type: "RsaSignature2018",
     created: new Date().toISOString(),
-    creator: "https://web3auth-bls6.onrender.com/keys/1",
+    creator:
+      DEV_MODE === "development"
+        ? "http://localhost:5173"
+        : "https://web3-assignment.netlify.app",
     signatureValue: signature,
   };
   return credential;

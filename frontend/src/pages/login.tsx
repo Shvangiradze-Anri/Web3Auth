@@ -40,14 +40,11 @@ const MetaMaskLoginPage = () => {
       const message = `Sign this message to verify your identity. Timestamp: ${Date.now()}`;
       const signature = await signer.signMessage(message);
 
-      const response = await axiosI.post(
-        "https://web3auth-bls6.onrender.com/api/auth/metamask",
-        {
-          address,
-          message,
-          signature,
-        }
-      );
+      const response = await axiosI.post("/api/auth/metamask", {
+        address,
+        message,
+        signature,
+      });
 
       if (response.data.success) {
         if (
@@ -93,7 +90,7 @@ const MetaMaskLoginPage = () => {
 
     try {
       const response = await axiosI.post(
-        "https://web3auth-bls6.onrender.com/additionaluserinfo",
+        "/additionaluserinfo",
         completeUserData
       );
 

@@ -1,11 +1,13 @@
 import axios from "axios";
 
+const DEV = false;
+
 const axiosInstance = axios.create({
-  baseURL: "https://web3auth-bls6.onrender.com",
+  baseURL: DEV ? "http://localhost:5000" : "https://web3auth-bls6.onrender.com",
   withCredentials: true,
 });
 export const axiosI = axios.create({
-  baseURL: "https://web3auth-bls6.onrender.com",
+  baseURL: DEV ? "http://localhost:5000" : "https://web3auth-bls6.onrender.com",
   withCredentials: true,
 });
 
@@ -13,7 +15,9 @@ const refreshToken = async (): Promise<string> => {
   try {
     console.log("gaeshvaaaaa");
     const response = await axios.post(
-      "https://web3auth-bls6.onrender.com/refresh_token",
+      `${
+        DEV ? "http://localhost:5000" : "https://web3auth-bls6.onrender.com"
+      }/refresh_token`,
       {},
       { withCredentials: true }
     );

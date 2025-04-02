@@ -25,9 +25,7 @@ const AdminDashboard = () => {
 
   const shouldFetch = token && userRole;
 
-  const url = shouldFetch
-    ? `https://web3auth-bls6.onrender.com/users?role=${userRole}`
-    : null;
+  const url = shouldFetch ? `/users?role=${userRole}` : null;
 
   const {
     data: users,
@@ -44,7 +42,7 @@ const AdminDashboard = () => {
       const newRole = currentRole === "Admin" ? "Premium" : "Admin";
       const token = localStorage.getItem("token");
       const response = await axiosInstance.put(
-        `https://web3auth-bls6.onrender.com/admin/upgrade/${userId}`,
+        `/admin/upgrade/${userId}`,
         { role: newRole },
         {
           headers: {
