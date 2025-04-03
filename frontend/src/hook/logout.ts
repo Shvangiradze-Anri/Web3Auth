@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { axiosI } from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 export const handleLogout = async () => {
   const navigate = useNavigate();
@@ -8,8 +9,8 @@ export const handleLogout = async () => {
 
     localStorage.clear();
 
-    navigate("/login");
+    window.location.replace("https://web3-assignment.netlify.app/login");
   } catch (error) {
-    // console.error("Logout failed:", error);
+    console.error("Logout failed:", error);
   }
 };
