@@ -6,7 +6,7 @@ export const handleLogout = async () => {
 
     localStorage.clear();
 
-    window.location.replace("/login");
+    window.location.replace("https://web3-assignment.netlify.app/login");
   } catch (error) {
     // console.error("Logout failed:", error);
   }
