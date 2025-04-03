@@ -98,3 +98,13 @@ export const generateAccessToken = (address, vc) => {
 const generateRefreshToken = (address, vc) => {
   return jwt.sign({ address, vc }, JWT_REFRESH, { expiresIn: "7d" });
 };
+
+export const logout = (req, res) => {
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    path: "/",
+  });
+  return res.status(200).json({ message: "Logged out successfully" });
+};

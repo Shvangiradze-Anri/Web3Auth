@@ -1,5 +1,6 @@
 import { useLayoutEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { handleLogout } from "./hook/logout";
 
 const App = () => {
   const navigate = useNavigate();
@@ -8,18 +9,10 @@ const App = () => {
 
   useLayoutEffect(() => {
     if (!userRole || !walletAddress) {
-      console.log("No userRole or walletAddress, redirecting to login");
+      // console.log("No userRole or walletAddress, redirecting to login");
       navigate("/login");
     }
   }, [navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("walletAddress");
-    localStorage.removeItem("isConnected");
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
 
   return (
     <section>

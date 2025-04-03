@@ -19,7 +19,7 @@ export const verifyVC = (allowedRoles) => {
       req.user = decoded;
 
       const user = await User.findOne({ address: req.user.address });
-      console.log(decoded);
+
       if (
         !user &&
         !user.address &&

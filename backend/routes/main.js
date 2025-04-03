@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
-import { authenticateMetaMask } from "../controllers/authcontroller.js";
+import { authenticateMetaMask, logout } from "../controllers/authcontroller.js";
 import {
   additionaluserinfo,
   userUpdate,
@@ -33,5 +33,6 @@ router.put(
   verifyVC(["Admin", "Premium"]),
   userUpdate
 );
+router.post("/logout", logout);
 
 export default router;

@@ -61,7 +61,7 @@ const AdminDashboard = () => {
         );
       }
     } catch (error) {
-      console.error("Failed to upgrade user", error);
+      // console.error("Failed to upgrade user", error);
     }
   };
 
@@ -70,40 +70,44 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="mt-10">
-      <table className="w-full ">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 text-center">ID</th>
-            <th className="px-4 py-2 text-center">Name</th>
-            <th className="px-4 py-2 text-center">Email</th>
-            <th className="px-4 py-2 text-center">Role</th>
-            <th className="px-4 py-2 text-center">Upgrade</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users &&
-            users.map((user: User) => (
-              <tr key={user._id}>
-                <td className="px-4 py-2 text-center">{user._id}</td>
-                <td className="px-4 py-2 text-center">{user.name}</td>
-                <td className="px-4 py-2 text-center">{user.email}</td>
-                <td className="px-4 py-2 text-center">{user.role}</td>
-                <td className="px-4 py-2 text-center">
-                  {user.role !== "premium" && (
+    <div className="mt-10 px-6">
+      <div className="overflow-hidden rounded-xl shadow-lg">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-[#5157c9] text-white">
+              <th className="px-6 py-3 text-left">ID</th>
+              <th className="px-6 py-3 text-left">Name</th>
+              <th className="px-6 py-3 text-left">Email</th>
+              <th className="px-6 py-3 text-left">Role</th>
+              <th className="px-6 py-3 text-center">Upgrade</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users &&
+              users.map((user: User, index: number) => (
+                <tr
+                  key={user._id}
+                  className={`border-b border-gray-700 ${
+                    index % 2 === 0 ? "bg-[#0d294179]" : "bg-gray-900"
+                  } hover:bg-gray-800 transition`}
+                >
+                  <td className="px-6 py-3 text-white">{user._id}</td>
+                  <td className="px-6 py-3 text-white">{user.name}</td>
+                  <td className="px-6 py-3 text-white">{user.email}</td>
+                  <td className="px-6 py-3 text-white">{user.role}</td>
+                  <td className="px-6 py-3 text-center">
                     <button
-                      className="px-3 py-1 bg-blue-500 text-white rounded"
-                      disabled={isLoading ? true : false}
+                      disabled={isLoading}
                       onClick={() => upgradeUser(user._id, user.role)}
                     >
                       Upgrade to {user.role === "Admin" ? "Premium" : "Admin"}
                     </button>
-                  )}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

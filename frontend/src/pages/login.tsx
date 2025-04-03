@@ -67,7 +67,7 @@ const MetaMaskLoginPage = () => {
         alert("Login failed!");
       }
     } catch (error) {
-      console.error("MetaMask login failed:", error);
+      // console.error("MetaMask login failed:", error);
     }
   };
 
@@ -100,7 +100,7 @@ const MetaMaskLoginPage = () => {
         alert("Failed to save user data.");
       }
     } catch (error) {
-      console.error("Error submitting user data:", error);
+      // console.error("Error submitting user data:", error);
     }
   };
 
