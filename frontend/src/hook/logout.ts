@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 export const handleLogout = async () => {
   const navigate = useNavigate();
   try {
-    await axiosI.post("/logout");
-
-    localStorage.clear();
-
+    const res=  await axiosI.post("/logout");
+if(res.status === 200){  
+  localStorage.clear();
     navigate("/login")
+                      
   } catch (error) {
-    // console.error("Logout failed:", error);
+    console.error("Logout failed:", error);
   }
 };
