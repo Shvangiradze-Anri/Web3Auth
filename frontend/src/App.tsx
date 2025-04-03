@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { handleLogout } from "./hook/logout";
+import handleLogout from "./hook/logout";
 
 const App = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const App = () => {
           {(userRole?.role === "Admin" || userRole?.role === "Premium") && (
             <button onClick={() => navigate("/admin")}>Go to Dashboard</button>
           )}
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={() => handleLogout(navigate)}>Logout</button>
         </div>
       </div>
 

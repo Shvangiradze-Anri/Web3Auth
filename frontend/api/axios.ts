@@ -1,5 +1,4 @@
 import axios from "axios";
-import { handleLogout } from "../src/hook/logout";
 
 const DEV = false;
 
@@ -14,18 +13,23 @@ export const axiosI = axios.create({
 
 const refreshToken = async (): Promise<string> => {
   try {
-    const response = await axiosI.post(
+    const response = await axios.post(
       `${
         DEV ? "http://localhost:5000" : "https://web3auth-bls6.onrender.com"
-      }/refresh_token`
+      }/refresh_token`,
+      {},
+      { withCredentials: true }
     );
 
     const token = response.data.accessToken as string;
 
     return token;
   } catch (error) {
-    handleLogout();
-    // console.error("Failed to refresh token", error);
+    await axiosI.post("/logout");
+
+    localStorage.clear();
+    window.location.replace("/login");
+    console.error("Failed to refresh token", error);
     throw error;
   }
 };
@@ -44,7 +48,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   async (response) => response,
   async (error) => {
-    // console.error("Response error:", error.response ? error.response : error);
+    console.error("Response error:", error.response ? error.response : error);
 
     const originalRequest = error.config;
     if (error.response && !originalRequest._retry) {
@@ -56,7 +60,7 @@ axiosInstance.interceptors.response.use(
         originalRequest.headers["authorization"] = `Bearer ${token}`;
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        // console.error("Failed to refresh token:", refreshError);
+        console.error("Failed to refresh token:", refreshError);
         return Promise.reject(refreshError);
       }
     }
