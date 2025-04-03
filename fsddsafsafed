@@ -1,0 +1,87 @@
+[33mcommit cab4c070b5ee2ca7b0fec24bc62c943b33142cbf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Thu Apr 3 14:13:41 2025 +0400
+
+    ..
+
+[33mcommit fcc70c6b72a2c089d9e230b2b7a6e42c94cae40e[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Thu Apr 3 13:29:53 2025 +0400
+
+    add logout function
+
+[33mcommit d13e3c7b616e7a2ec622ea1f0425ad42b31b5bda[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 23:51:26 2025 +0400
+
+    update profile component and readme file
+
+[33mcommit 7e6b455ffc16fe84f8e23c85963bb1463ba288a3[m
+Merge: eb50b1f 136ea3d
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 22:36:22 2025 +0400
+
+    Merge branch 'main' of https://github.com/Shvangiradze-Anri/Web3Auth
+
+[33mcommit eb50b1f7269af1036c8405aff7366c46ae21e48e[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 22:35:21 2025 +0400
+
+    remove console logs
+
+[33mcommit 136ea3d1277cbcf043dabc5c8d24c0b8f67a9d04[m
+Author: Anri Shvangiradze <158323942+Shvangiradze-Anri@users.noreply.github.com>
+Date:   Wed Apr 2 19:47:07 2025 +0400
+
+    Update authcontroller.js
+
+[33mcommit 6115c3d0a96ba28e3640c1ae00655a11cc92686d[m
+Author: Anri Shvangiradze <158323942+Shvangiradze-Anri@users.noreply.github.com>
+Date:   Wed Apr 2 19:05:23 2025 +0400
+
+    Update authcontroller.js
+    
+    set cookies to true
+
+[33mcommit 264ddc5045388ec0cb3a91312f7a3e3a2453c1bd[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 16:53:53 2025 +0400
+
+    ..
+
+[33mcommit 7bb582f61ad11712a5e3e0c2af7595bf278c3e1b[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 16:33:13 2025 +0400
+
+    add devmode
+
+[33mcommit 940921edc483456f494e15e8587bedfbd6fc62b4[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 16:08:01 2025 +0400
+
+    update urls
+
+[33mcommit 0d8f65f265db2d379ba8fc1cfb485f5bf7d98b83[m
+Merge: 65bf420 3268baa
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 15:35:33 2025 +0400
+
+    Merge branch 'main' of https://github.com/Shvangiradze-Anri/Web3Auth
+
+[33mcommit 65bf420e42431ed93ddb74fd4ea1eaced62ff229[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 15:35:28 2025 +0400
+
+    ..
+
+[33mcommit 3268baae5dbac07bf8b57038d8f11e98dc5f23a8[m
+Author: Anri Shvangiradze <158323942+Shvangiradze-Anri@users.noreply.github.com>
+Date:   Wed Apr 2 15:23:58 2025 +0400
+
+    Create README.md
+
+[33mcommit f0f3a81065a1c543c54b560096e4a82dec71b4ed[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Giorgi <shvangiradze22giorgi@gmail.com>
+Date:   Wed Apr 2 15:07:05 2025 +0400
+
+    Initial commit
